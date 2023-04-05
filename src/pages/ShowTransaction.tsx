@@ -1,14 +1,9 @@
 import React from "react";
 
-interface ShowTransactionProps {
-    property: string;
-}
-
-const ShowTransaction: React.FC<ShowTransactionProps> = ({ property }) => {
+const ShowTransaction: React.FC = () => {
     return (
         <>
             <h1>Growdev</h1>
-            <p>{property}</p>
         </>
     );
 };
