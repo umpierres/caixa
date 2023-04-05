@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none'
             }}
           >
-            LOGO
+            Caixa
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
