@@ -1,14 +1,17 @@
-import React from "react";
-import ResponsiveAppBar from "../components/ResponsiveAppBar";
-import Paper from "../components/Paper";
+import React from 'react';
+import { GlobalStyles } from '@mui/styled-engine';
 
-const CreateTransaction: React.FC = () => {
-    return (
-        <>
-            <ResponsiveAppBar />
-            <Paper />
-        </>
-    );
+const GStyles: React.FC = () => {
+  return (
+    <GlobalStyles
+      styles={{
+        body: {
+          padding: '0px',
+          margin: '0px'
+        }
+      }}
+    />
+  );
 };
 
-export default CreateTransaction;
+export default GStyles;
