@@ -6,7 +6,7 @@ const adapter = createEntityAdapter<TransactionType>({
   selectId: item => item.id
 });
 
-export const { selectAll, selectById } = adapter.getSelectors((state: RootState) => state.transactions);
+
 
 const transactionSlice = createSlice({
   name: 'transactions',
@@ -25,6 +25,8 @@ const transactionSlice = createSlice({
   }
 });
 
+export const { selectAll, selectById } = adapter.getSelectors((state: RootState) => state.transactions);
+
 export const { addTransiction, removeTransiction, updateTransiction } = transactionSlice.actions;
 
-export default contactsSlice.reducer;
+export default transactionSlice.reducer;
