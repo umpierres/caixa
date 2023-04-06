@@ -1,5 +1,5 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import { RootState } from '..';
+import { RootState } from '../';
 import TransactionType from '../../types/TransactionType';
 
 const adapter = createEntityAdapter<TransactionType>({
@@ -8,16 +8,23 @@ const adapter = createEntityAdapter<TransactionType>({
 
 export const { selectAll, selectById } = adapter.getSelectors((state: RootState) => state.transactions);
 
-const contactsSlice = createSlice({
+const transactionSlice = createSlice({
   name: 'transactions',
   initialState: adapter.getInitialState(),
   reducers: {
-    addContact: adapter.addOne,
-    removeContact: adapter.removeOne,
-    updateContact: adapter.updateOne
+    salvarLocalStorage: (state, action) => {
+      const retorno = adapter.addOne(state, action.payload);
+
+      localStorage.setItem('retorno', JSON.stringify(retorno));
+
+      return retorno;
+    },
+    addTransiction: adapter.addOne,
+    removeTransiction: adapter.removeOne,
+    updateTransiction: adapter.updateOne
   }
 });
 
-export const { addContact, removeContact, updateContact } = contactsSlice.actions;
+export const { addTransiction, removeTransiction, updateTransiction } = transactionSlice.actions;
 
 export default contactsSlice.reducer;
