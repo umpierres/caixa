@@ -6,8 +6,6 @@ const adapter = createEntityAdapter<TransactionType>({
   selectId: item => item.id
 });
 
-
-
 const transactionSlice = createSlice({
   name: 'transactions',
   initialState: adapter.getInitialState(),
