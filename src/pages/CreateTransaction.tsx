@@ -30,9 +30,7 @@ const CreateTransaction: React.FC = () => {
     setTransactions({ ...transactions, [e.target.name]: e.target.value });
   };
   const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    setTransactions({ ...transactions, type: 'Deposito' });
     setTransactions({ ...transactions, type: e.target.value as 'Deposito' | 'Saque' });
-    setTypeTransaction(e.target.value);
   };
   return (
     <>
@@ -73,7 +71,7 @@ const CreateTransaction: React.FC = () => {
               onChange={handleTransactions}
             />
             <Button variant="contained" sx={{ m: 2 }} onClick={saveTransaction}>
-              {typeTransaction === 'Deposito' ? 'Depósito' : 'Saque'}
+              {transactions.type === 'Deposito' ? 'Depósito' : 'Saque'}
             </Button>
           </Grid>
           <Grid item lg={6} xs={6}>
@@ -81,7 +79,7 @@ const CreateTransaction: React.FC = () => {
               sx={{ m: 2 }}
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
-              value={typeTransaction}
+              value={transactions.type}
               onChange={handleSelect}
             >
               <FormControlLabel value="Deposito" control={<Radio />} label="Depósito" />
