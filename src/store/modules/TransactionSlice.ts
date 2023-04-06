@@ -17,14 +17,14 @@ const transactionSlice = createSlice({
 
       return retorno;
     },
-    addTransiction: adapter.addOne,
-    removeTransiction: adapter.removeOne,
-    updateTransiction: adapter.updateOne
+    addTransaction: adapter.addOne,
+    removeTransaction: adapter.removeOne,
+    updateTransaction: adapter.updateOne
   }
 });
 
 export const { selectAll, selectById } = adapter.getSelectors((state: RootState) => state.transactions);
 
-export const { addTransiction, removeTransiction, updateTransiction } = transactionSlice.actions;
+export const { addTransaction, removeTransaction, updateTransaction } = transactionSlice.actions;
 
 export default transactionSlice.reducer;
