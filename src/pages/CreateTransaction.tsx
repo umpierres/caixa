@@ -13,7 +13,7 @@ const CreateTransaction: React.FC = () => {
   const [transactions, setTransactions] = useState<TransactionType>({} as TransactionType);
 
   const dispatch = useAppDispatch();
-  const [typeTransaction, setTypeTransaction] = useState('deposit');
+  const [typeTransaction, setTypeTransaction] = useState('Deposito');
 
   const saveTransaction = () => {
     dispatch(
@@ -30,7 +30,7 @@ const CreateTransaction: React.FC = () => {
     setTransactions({ ...transactions, [e.target.name]: e.target.value });
   };
   const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    setTransactions({ ...transactions, type: e.target.value as 'add' | 'remove' });
+    setTransactions({ ...transactions, type: e.target.value as 'Deposito' | 'Saque' });
     setTypeTransaction(e.target.value);
   };
   return (
@@ -71,7 +71,7 @@ const CreateTransaction: React.FC = () => {
               onChange={handleTransactions}
             />
             <Button variant="contained" sx={{ m: 2 }} onClick={saveTransaction}>
-              {typeTransaction === 'add' ? 'Depósito' : 'Saque'}
+              {typeTransaction === 'Deposito' ? 'Depósito' : 'Saque'}
             </Button>
           </Grid>
           <Grid item lg={6} xs={6}>
@@ -82,8 +82,8 @@ const CreateTransaction: React.FC = () => {
               value={typeTransaction}
               onChange={handleSelect}
             >
-              <FormControlLabel value="add" control={<Radio />} label="Depósito" />
-              <FormControlLabel value="remove" control={<Radio />} label="Saque" />
+              <FormControlLabel value="Deposito" control={<Radio />} label="Depósito" />
+              <FormControlLabel value="Saque" control={<Radio />} label="Saque" />
             </RadioGroup>
           </Grid>
         </Grid>
