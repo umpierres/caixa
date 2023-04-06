@@ -6,7 +6,15 @@ const CreateTransaction: React.FC = () => {
   return (
     <>
       <ResponsiveAppBar />
-      <Container>
+      <Container
+        maxWidth="lg"
+        fixed
+        sx={{
+          backgroundColor: 'LightGray',
+          paddingBottom: '20px',
+          marginTop: '50px'
+        }}
+      >
         <Grid container spacing={5}>
           <Grid item xs={12}>
             <Typography variant="h4">Saldo: R$ 0,00</Typography>
