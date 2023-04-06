@@ -10,13 +10,7 @@ const transactionSlice = createSlice({
   name: 'transactions',
   initialState: adapter.getInitialState(),
   reducers: {
-    salvarLocalStorage: (state, action) => {
-      const retorno = adapter.addOne(state, action.payload);
 
-      localStorage.setItem('retorno', JSON.stringify(retorno));
-
-      return retorno;
-    },
     addTransaction: adapter.addOne,
     removeTransaction: adapter.removeOne,
     updateTransaction: adapter.updateOne

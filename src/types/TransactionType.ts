@@ -1,7 +1,7 @@
 type TransactionType = {
   description: string;
   value: number;
-  type: 'add' | 'remove' | '';
+  type: 'Deposito' | 'Saque' | '';
   id: number;
 };
 
