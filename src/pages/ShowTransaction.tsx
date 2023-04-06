@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
 import {
   Container,
@@ -12,8 +13,11 @@ import {
   Typography
 } from '@mui/material';
 import Paper from '@mui/material/Paper';
+import { selectAll } from '../store/modules/TransactionSlice';
 
 const ShowTransaction: React.FC = () => {
+  const transaction = useSelector(selectAll);
+
   return (
     <>
       <ResponsiveAppBar />
@@ -49,12 +53,14 @@ const ShowTransaction: React.FC = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell>01</TableCell>
-                    <TableCell>Mercado Pago</TableCell>
-                    <TableCell>R$4,50</TableCell>
-                    <TableCell>Saque</TableCell>
-                  </TableRow>
+                  {transaction.map(transaction => (
+                    <TableRow key={transaction.id}>
+                      <TableCell>{transaction.id}</TableCell>
+                      <TableCell>{transaction.description}</TableCell>
+                      <TableCell>{transaction.value}</TableCell>
+                      <TableCell>{transaction.type}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>
