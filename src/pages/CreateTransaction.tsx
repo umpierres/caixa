@@ -48,7 +48,7 @@ const CreateTransaction: React.FC = () => {
         maxWidth="lg"
         fixed
         sx={{
-          backgroundColor: 'DeepSkyBlue',
+          backgroundColor: 'SteelBlue',
           paddingBottom: '20px',
           marginTop: '50px'
         }}
