@@ -15,13 +15,6 @@ const CreateTransaction: React.FC = () => {
   const dispatch = useAppDispatch();
   const [typeTransaction, setTypeTransaction] = useState('deposit');
 
-  useEffect(() => {
-    const getBalance = JSON.parse(localStorage.getItem('balance') || '[]');
-    if (getBalance?.length === 0) {
-      return;
-    }
-  }, []);
-
   const saveTransaction = () => {
     dispatch(
       addTransaction({
@@ -40,7 +33,6 @@ const CreateTransaction: React.FC = () => {
     setTransactions({ ...transactions, type: e.target.value as 'add' | 'remove' });
     setTypeTransaction(e.target.value);
   };
-
   return (
     <>
       <ResponsiveAppBar />
