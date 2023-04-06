@@ -1,29 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 const CreateTransaction: React.FC = () => {
-  const [selectedCheckbox, setSelectedCheckbox] = useState(''); // estado para armazenar o checkbox selecionado
+  const [typeTransaction, setTypeTransaction] = useState('deposit');
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value === setSelectedCheckbox) {
-      setSelectedCheckbox('');
-    } else {
-      setSelectedCheckbox(event.target.value);
-    }
-  };
-
-  const getButtonName = () => {
-    if (selectedCheckbox === 'deposito') {
-      return 'Depósito';
-    } else if (selectedCheckbox === 'saque') {
-      return 'Saque';
-    } else {
-      return 'Selecionar';
-    }
+  const handleChangeTypeTransaction = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTypeTransaction(event.target.value);
   };
 
   return (
@@ -45,27 +31,19 @@ const CreateTransaction: React.FC = () => {
           <Grid item lg={6} xs={6}>
             <TextField label="Valor" fullWidth type={'number'} id="outlined-size-small" size="small" />
             <Button variant="contained" sx={{ marginTop: '7px' }}>
-              {getButtonName()} {/* atualiza o nome do botão de acordo com a seleção do checkbox */}
+              {typeTransaction === 'deposit' ? 'Depósito' : 'Saque'}
             </Button>
           </Grid>
           <Grid item lg={6} xs={6}>
-            <FormGroup aria-label="position" row>
-              <FormControlLabel
-                value="deposito"
-                control={<Checkbox checked={selectedCheckbox === 'deposito'} onChange={handleCheckboxChange} />}
-                label="Depósito"
-                labelPlacement="top"
-                disabled={selectedCheckbox === 'saque'}
-                // desabilita o checkbox "Depósito" se o "Saque" estiver selecionado
-              />
-              <FormControlLabel
-                value="saque"
-                control={<Checkbox checked={selectedCheckbox === 'saque'} onChange={handleCheckboxChange} />}
-                label="Saque"
-                labelPlacement="top"
-                disabled={selectedCheckbox === 'deposito'} // desabilita o checkbox "Saque" se o "Depósito" estiver selecionado
-              />
-            </FormGroup>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={typeTransaction}
+              onChange={handleChangeTypeTransaction}
+            >
+              <FormControlLabel value="deposit" control={<Radio />} label="Depósito" />
+              <FormControlLabel value="withdraw" control={<Radio />} label="Saque" />
+            </RadioGroup>
           </Grid>
         </Grid>
       </Container>
