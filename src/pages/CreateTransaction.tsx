@@ -31,7 +31,7 @@ const CreateTransaction: React.FC = () => {
           <Grid item lg={6} xs={6}>
             <TextField label="Valor" fullWidth type={'number'} id="outlined-size-small" size="small" />
             <Button variant="contained" sx={{ marginTop: '7px' }}>
-              {typeTransaction === 'deposit' ? 'Depósito' : 'Saque'}
+              {typeTransaction === 'deposit' ? 'Depositar' : 'Sacar'}
             </Button>
           </Grid>
           <Grid item lg={6} xs={6}>
