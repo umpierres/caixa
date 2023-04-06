@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
 import Radio from '@mui/material/Radio';
@@ -30,7 +30,6 @@ const CreateTransaction: React.FC = () => {
     setTransactions({ ...transactions, [e.target.name]: e.target.value });
   };
   const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    setTransactions({ ...transactions, type: 'Deposito' });
     setTransactions({ ...transactions, type: e.target.value as 'Deposito' | 'Saque' });
     setTypeTransaction(e.target.value);
   };
