@@ -26,10 +26,7 @@ const CreateTransaction: React.FC = () => {
     );
   };
 
-  const handleTransactionsValue = (e: ChangeEvent<HTMLInputElement>) => {
-    setTransactions({ ...transactions, [e.target.name]: e.target.value });
-  };
-  const handleTransactionsDescription = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleTransactions = (e: ChangeEvent<HTMLInputElement>) => {
     setTransactions({ ...transactions, [e.target.name]: e.target.value });
   };
   const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +54,7 @@ const CreateTransaction: React.FC = () => {
               sx={{ m: 2 }}
               name="value"
               label="Valor"
-              onChange={handleTransactionsValue}
+              onChange={handleTransactions}
               fullWidth
               type="number"
               id="outlined-size-small"
@@ -66,12 +63,13 @@ const CreateTransaction: React.FC = () => {
 
             <TextField
               sx={{ m: 2 }}
+              name="description"
               label="Descrição"
               fullWidth
               type={'text'}
               id="outlined-size-small"
               size="small"
-              onChange={handleTransactionsDescription}
+              onChange={handleTransactions}
             />
             <Button variant="contained" sx={{ m: 2 }} onClick={saveTransaction}>
               {typeTransaction === 'Deposito' ? 'Depósito' : 'Saque'}
