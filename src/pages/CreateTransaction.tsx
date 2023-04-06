@@ -30,6 +30,7 @@ const CreateTransaction: React.FC = () => {
     setTransactions({ ...transactions, [e.target.name]: e.target.value });
   };
   const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
+    setTransactions({ ...transactions, type: 'Deposito' });
     setTransactions({ ...transactions, type: e.target.value as 'Deposito' | 'Saque' });
     setTypeTransaction(e.target.value);
   };
